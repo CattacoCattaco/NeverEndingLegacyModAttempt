@@ -89,16 +89,22 @@ func:function()
 	//Thech
 	new G.Tech({
 		name:'mycology',
-		desc:'@unlocks [fungus farm]s which grant herbs at a higher rate than gatherers.',
+		desc:'@provides 10 [inspiration]@provides 10 [wisdom]<>unlocks [fungus farm]s which grant herbs at a higher rate than gatherers.',
 		icon:[0,1,'spicySheet'],
 		cost:{'insight':10,'culture':5},
-    effects:[],
+                effects:[
+		  {type:'provide res',what:{'inspiration':30,'wisdom':30}},
+		],
+		req:{'speech':true},
 	});
 	new G.Tech({
 		name:'advanced mycology',
-		desc:'@[fungus farm]s have 1.75x efficiency.',
+		desc:'@provides 40 [inspiration]@provides 40 [wisdom]<>[fungus farm]s have 1.75x efficiency.',
 		icon:[0,1,'spicySheet'],
 		cost:{'insight':40,'culture':20},
+                effects:[
+		  {type:'provide res',what:{'inspiration':30,'wisdom':30}},
+		],
 		req:{'mycology':true},
 	});
 	
