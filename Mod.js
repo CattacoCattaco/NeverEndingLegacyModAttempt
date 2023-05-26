@@ -80,11 +80,11 @@ func:function()
 	//Base data modification
 	G.contextNames['fungal farm']='Fungal farming';
 	G.getDict('forest mushrooms').res['gather']['spore']=1;
-	G.getDict('forest mushrooms').res['fungal farm']['herb']=15;
+	G.getDict('forest mushrooms').res.push({'fungal farm':{'herb':20}});
 		//adding a new mode to artisans so they can make hot sauce from hot peppers
-	G.getDict('artisan').modes['hot sauce']={name:'Make hot sauce',desc:'Turn 3 [hot pepper]s and 3 [herb]s into 1 [hot sauce].',req:{'hot sauce preparing':true},use:{'knapped tools':1}};
-		//adding a new effect to artisans that handles the actual hot sauce preparing and is only active when the unit has the mode "hot sauce"
-	G.getDict('artisan').effects.push({type:'convert',from:{'hot pepper':3,'herb':3},into:{'hot sauce':1},every:3,mode:'hot sauce'});
+	// G.getDict('artisan').modes['hot sauce']={name:'Make hot sauce',desc:'Turn 3 [hot pepper]s and 3 [herb]s into 1 [hot sauce].',req:{'hot sauce preparing':true},use:{'knapped tools':1}};
+	// 	//adding a new effect to artisans that handles the actual hot sauce preparing and is only active when the unit has the mode "hot sauce"
+	// G.getDict('artisan').effects.push({type:'convert',from:{'hot pepper':3,'herb':3},into:{'hot sauce':1},every:3,mode:'hot sauce'});
 	
 	//Thech
 	new G.Tech({
