@@ -4,14 +4,14 @@ author:'Pookstir',
 desc:'',
 engineVersion:1,
 requires:['Default dataset*'],
-sheets:{'spicySheet':'img/spicyModIconSheet.png'},//custom stylesheet (note : broken in IE and Edge for the time being)
+sheets:{'fungi':'img/fungiSheet.png'},//custom stylesheet (note : broken in IE and Edge for the time being)
 func:function()
 {
 	//New goods
 	new G.Goods({
 		name:'mycelium',
 		desc:'[mycelium] is a great source of [herb]s; Occasionally you may find [spore]s.',
-		icon:[10,10],
+		icon:[0,0,'fungi'],
 		res:{
 			'gather':{'herb':13,'spore':0.5},
 			'fungal farm':{'herb':23},
@@ -21,7 +21,7 @@ func:function()
 	new G.Goods({
 		name:'big mushroom',
 		desc:'[big mushroom]s are giant versions of mushrooms you would see in other forests.',
-		icon:[10,10],
+		icon:[1,0,'fungi'],
 		res:{
 			'gather':{'herb':6,'spore':0.5, 'stick':1},
 			'chop':{'herb':18,'spore':0.75, 'stick':4},
@@ -53,7 +53,7 @@ func:function()
 	new G.Res({
 		name:'spore',
 		desc:'[spore]s are capable of being used to grow fungi.',
-		icon:[0,0,'spicySheet'],
+		icon:[2,0,'fungi'],
 		category:'build',
 	});
   
@@ -61,12 +61,12 @@ func:function()
   new G.Unit({
 		name:'fungus farm',
 		startWith:0,
-		desc:'@farms [herbs]',
-		icon:[0,2],
+		desc:'@farms [herb]',
+		icon:[1,0,'fungi'],
 		cost:{},
 		use:{'worker':1},
 		effects:[
-      {type:'fungal farm',context:'gather',amount:2,max:4},
+                        {type:'fungal farm',context:'gather',amount:2,max:4},
 			{type:'fungal farm',context:'fungal farm',what:{'herb':7},amount:1,max:12},
 			{type:'fungal farm',context:'fungal farm',what:{'stick':0.5},amount:1,max:1},
 			{type:'fungal farm',context:'fungal farm',what:{'spore':0.25},amount:1,max:1,req:{'advanced mycology':true}},
@@ -80,7 +80,6 @@ func:function()
 	//Base data modification
 	G.contextNames['fungal farm']='Fungal farming';
 	G.getDict('forest mushrooms').res['gather']['spore']=1;
-// 	G.getDict('forest mushrooms').res['fungal farm']['herb']=15;
 // 		//adding a new mode to artisans so they can make hot sauce from hot peppers
 // 	G.getDict('artisan').modes['hot sauce']={name:'Make hot sauce',desc:'Turn 3 [hot pepper]s and 3 [herb]s into 1 [hot sauce].',req:{'hot sauce preparing':true},use:{'knapped tools':1}};
 // 		//adding a new effect to artisans that handles the actual hot sauce preparing and is only active when the unit has the mode "hot sauce"
@@ -90,7 +89,7 @@ func:function()
 	new G.Tech({
 		name:'mycology',
 		desc:'@provides 10 [inspiration]@provides 10 [wisdom]<>unlocks [fungus farm]s which grant herbs at a higher rate than gatherers.',
-		icon:[0,1,'spicySheet'],
+		icon:[1,1,'fungi'],
 		cost:{'insight':10,'culture':5},
                 effects:[
 		  {type:'provide res',what:{'inspiration':30,'wisdom':30}},
@@ -100,7 +99,7 @@ func:function()
 	new G.Tech({
 		name:'advanced mycology',
 		desc:'@provides 40 [inspiration]@provides 40 [wisdom]<>[fungus farm]s have 1.75x efficiency.',
-		icon:[0,1,'spicySheet'],
+		icon:[1,2,'fungi'],
 		cost:{'insight':40,'culture':20},
                 effects:[
 		  {type:'provide res',what:{'inspiration':30,'wisdom':30}},
