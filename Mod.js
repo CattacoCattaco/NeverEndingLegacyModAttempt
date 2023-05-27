@@ -4,7 +4,7 @@ author:'Pookstir',
 desc:'',
 engineVersion:1,
 requires:['Default dataset*'],
-sheets:{'fungi':'img/fungiSheet.png'},//custom stylesheet (note : broken in IE and Edge for the time being)
+sheets:{'fungi':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png'},//custom stylesheet (note : broken in IE and Edge for the time being)
 func:function()
 {
 	//New goods
