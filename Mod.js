@@ -62,15 +62,15 @@ func:function()
 		name:'fungus farm',
 		startWith:0,
 		desc:'@farms [herb]',
-		icon:[1,0,'fungi'],
+		icon:[0,1,'fungi'],
 		cost:{},
 		use:{'worker':1},
 		effects:[
-                        {type:'fungal farm',context:'gather',amount:2,max:4},
-			{type:'fungal farm',context:'fungal farm',what:{'herb':7},amount:1,max:12},
-			{type:'fungal farm',context:'fungal farm',what:{'stick':0.5},amount:1,max:1},
-			{type:'fungal farm',context:'fungal farm',what:{'spore':0.25},amount:1,max:1,req:{'advanced mycology':true}},
-			{type:'mult',value:1.75,req:{'advanced mycology':true}}
+                        {type:'gather',context:'fungal farm',amount:2,max:4},
+			{type:'gather',context:'fungal farm',what:{'herb':7},amount:1,max:12},
+			{type:'gather',context:'fungal farm',what:{'stick':0.5},amount:1,max:1},
+			{type:'gather',context:'fungal farm',what:{'spore':0.25},amount:1,max:1,req:{'advanced mycology':true}},
+			{type:'gather',value:1.75,req:{'advanced mycology':true}}
 		],
 		req:{'mycology':true},
 		category:'production',
@@ -99,7 +99,7 @@ func:function()
 	new G.Tech({
 		name:'advanced mycology',
 		desc:'@provides 40 [inspiration]@provides 40 [wisdom]<>[fungus farm]s have 1.75x efficiency.',
-		icon:[1,2,'fungi'],
+		icon:[2,1,'fungi'],
 		cost:{'insight':40,'culture':20},
                 effects:[
 		  {type:'provide res',what:{'inspiration':30,'wisdom':30}},
