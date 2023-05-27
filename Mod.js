@@ -100,4 +100,4 @@ func:function()
 // 		effects:[
 // 			{type:'function',func:function(){G.getDict('hot sauce').turnToByContext['eat']['happiness']=0.2;}},//this is a custom function executed when we gain the trait
 // 		],
-// 	});
+}});
