@@ -30,26 +30,7 @@ func:function()
 		mult:5,
 	});
   
-  //New land types
-	new G.Land({
-		name:'mushroom forest',
-		names:['Mushroom forest'],
-		goods:[
-			{type:'berry bush',chance:0.2},
-			{type:'forest mushrooms',amount:3},
-			{type:'big mushroom',amount:3},
-			{type:'mycelium'},
-			{type:['stoats'],chance:0.4},
-			{type:['wolves'],chance:0.5,min:0.5,max:1},
-			{type:'freshwater fish',chance:0.1,min:0.1,max:0.3},
-			{type:'freshwater',amount:1},
-			{type:'rocky substrate'},
-		],
-		image:10,
-		score:6,
-	});
-  
-	//new resources
+  	//new resources
 	new G.Res({
 		name:'spore',
 		desc:'[spore]s are capable of being used to grow fungi.',
@@ -80,6 +61,7 @@ func:function()
 	//Base data modification
 	G.contextNames['fungal farm']='Fungal farming';
 	G.getDict('forest mushrooms').res['gather']['spore']=1;
+	G.getDict('jungle').goods.push({type:['mycelium','big mushroom','forest mushroom'],chance:0.35,min:0.25,max:0.85});
 // 		//adding a new mode to artisans so they can make hot sauce from hot peppers
 // 	G.getDict('artisan').modes['hot sauce']={name:'Make hot sauce',desc:'Turn 3 [hot pepper]s and 3 [herb]s into 1 [hot sauce].',req:{'hot sauce preparing':true},use:{'knapped tools':1}};
 // 		//adding a new effect to artisans that handles the actual hot sauce preparing and is only active when the unit has the mode "hot sauce"
