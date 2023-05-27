@@ -93,6 +93,7 @@ func:function()
 		cost:{'insight':10,'culture':5},
                 effects:[
 		  {type:'provide res',what:{'inspiration':30,'wisdom':30}},
+		  {type:'show context',what:['fungal farm']},
 		],
 		req:{'speech':true},
 	});
