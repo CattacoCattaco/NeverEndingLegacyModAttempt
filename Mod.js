@@ -83,26 +83,35 @@ func:function()
 		name:'cane',
 		desc:'[cane]s may be processed into [paper] and [sugar].',
 		icon:[0,0,'papery'],
+		partOf:'misc materials',
 		category:'misc',
 	});
 	new G.Res({
 		name:'sugar',
 		desc:'[sugar] is made from [cane]s.',
 		icon:[0,1,'papery'],
+		partOf:'misc materials',
 		category:'misc',
 	});
 	new G.Res({
 		name:'paper',
 		desc:'[paper] is made from [cane]s.',
 		icon:[0,2,'papery'],
+		partOf:'misc materials',
 		category:'misc',
 	});
 	new G.Res({
 		name:'book',
 		desc:'[book]s are may be used up over time, creating [insight].',
 		icon:[1,0,'papery'],
-		turnToByContext:{'decay':{'insight':1}},
+		partOf:'misc materials',
 		category:'misc',
+		tick:function(me,tick)
+		{
+			var toSpoil=me.amount*0.01;
+			var spent=G.lose(me.name,randomFloor(toSpoil),'decay');
+			G.pseudoGather(G.getRes('insight'),randomFloor(spent));
+		},
 	});
   
         //new units
@@ -158,8 +167,8 @@ func:function()
 		upkeep:{'coin':0.5},
 		gizmos:true,
 		modes:{
-			'cane':{name:'Cane processing',icon:[0,0,'soup'],desc:'Craft 1 [paper] and 3 [sugar] from 1 [cane].'},
-			'log':{name:'Wood processing',icon:[0,1,'soup'],desc:'Craft 3 [paper] from 1 [log].',req:{'wood processing': true}},
+			'cane':{name:'Cane processing',icon:[0,0,'papery'],desc:'Craft 1 [paper] and 3 [sugar] from 1 [cane].'},
+			'log':{name:'Wood processing',icon:[1,6],desc:'Craft 3 [paper] from 1 [log].',req:{'wood processing': true}},
 		},
 		effects:[
 			{type:'convert',from:{'cane':1},into:{'paper':1,'sugar':3},every:3,mode:'cane'},
@@ -167,6 +176,25 @@ func:function()
 		],
 		req:{'cane processing':true},
 		category:'crafting',
+	});
+	
+	//Wonders
+	new G.Unit({
+		name:'mausoleum2',
+		desc:'@leads to the <b>Mausoleum Victory</b><>A mystical monument where the dead lie.//A temple housing a tomb deep under its rocky platform, the Mausoleum stands tall, its eternal shadow forever reminding your people of your greatness.',
+		wonder:'mausoleum',
+		icon:[1,14],
+		wideIcon:[0,14],
+		cost:{'basic building materials':1000},
+		costPerStep:{'basic building materials':200,'precious building materials':20},
+		steps:100,
+		messageOnStart:'You begin the construction of the Mausoleum. Its towering mass already dominates the city, casting fear and awe wherever its shadow reaches.',
+		finalStepCost:{'population':100},
+		finalStepDesc:'To complete the Mausoleum, 100 of your [population,People] must be sacrificed to accompany you as servants in the afterlife.',
+		use:{'land':10},
+		//require:{'worker':10,'stone tools':10},
+		req:{'monument-building':true},
+		category:'wonder',
 	});
 	
 	//Base data modification
