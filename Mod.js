@@ -128,6 +128,7 @@ func:function()
 			{type:'gather',context:'fungal farm',what:{'stick':0.5},amount:1,max:3},
 			{type:'gather',context:'fungal farm',what:{'spore':0.25},amount:1,max:1,req:{'advanced mycology':true}},
 			{type:'mult',value:1.75,req:{'advanced mycology':true}},
+			{type:'mult',value:5,req:{'myconument-building':true}},
 		],
 		req:{'mycology':true},
 		category:'production',
