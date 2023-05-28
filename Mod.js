@@ -4,7 +4,7 @@ author:'Pookstir',
 desc:'',
 engineVersion:1,
 requires:['Default dataset*'],
-sheets:{'fungi':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png'},//custom stylesheet (note : broken in IE and Edge for the time being)
+sheets:{'fungi':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png','soup':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/soupSheet.png'},
 func:function()
 {
 	//New goods
@@ -37,6 +37,38 @@ func:function()
 		icon:[2,0,'fungi'],
 		category:'build',
 	});
+	new G.Res({
+		name:'mushroom stew',
+		desc:'[mushroom stew] is pretty tasty and quite healthy.',
+		icon:[0,0,'soup'],
+		turnToByContext:{'eating':{'health':0.04,'happiness':0.03},'decay':{'spore':0.2,'spoiled food':0.8}},
+		partOf:'food',
+		category:'food',
+	});
+	new G.Res({
+		name:'vegetable soup',
+		desc:'[vegetable soup] is palletable and extremely healthy.',
+		icon:[0,1,'soup'],
+		turnToByContext:{'eating':{'health':0.05,'happiness':0.02},'decay':{'spoiled food':1}},
+		partOf:'food',
+		category:'food',
+	});
+	new G.Res({
+		name:'chicken soup',
+		desc:'[chicken soup] is quite tasty and pretty healthy.',
+		icon:[1,0,'soup'],
+		turnToByContext:{'eating':{'health':0.03,'happiness':0.04},'decay':{'spoiled food':1}},
+		partOf:'food',
+		category:'food',
+	});
+	new G.Res({
+		name:'clam chowder',
+		desc:'[clam chowder] is extremely tasty and somewhat healthy.',
+		icon:[1,1,'soup'],
+		turnToByContext:{'eating':{'health':0.02,'happiness':0.05},'decay':{'spore':0.2,'spoiled food':0.8}},
+		partOf:'food',
+		category:'food',
+	});
   
         //new units
         new G.Unit({
@@ -56,6 +88,30 @@ func:function()
 		req:{'mycology':true},
 		category:'production',
 		priority:10,
+	});
+	
+	new G.Unit({
+		name:'soup chef',
+		desc:'@turns [herb]s, [stick]s, and other ingredients in to soups/stews.',
+		icon:[6,2],
+		cost:{},
+		use:{'worker':1,'metal tools':1},
+		upkeep:{'coin':0.1},
+		gizmos:true,
+		modes:{
+			'mushroom':{name:'Mushroom stew',icon:[0,0,'soup'],desc:'Use [spore]s to create [mushroom stew].'},
+			'vegetable':{name:'Vegetable soup',icon:[0,1,'soup'],desc:'Use additional [herb]s to create [vegetable soup].'},
+			'chicken':{name:'Chicken soup',icon:[1,0,'soup'],desc:'Use [meat] to create [chicken soup].'},
+			'clam':{name:'Clam chowder',icon:[1,1,'soup'],desc:'Use [seafood] to create [clam chowder].'},
+		},
+		effects:[
+			{type:'convert',from:{'stick':3,'herb':12,'water':1,'spore':4},into:{'mushroom stew':1},every:1,repeat:7,mode:'mushroom'},
+			{type:'convert',from:{'stick':3,'herb':24,'water':1},into:{'vegetable soup':1},every:1,repeat:7,mode:'vegetable'},
+			{type:'convert',from:{'stick':3,'herb':12,'water':1,'meat':2},into:{'chicken soup':1},every:1,repeat:7,mode:'chicken'},
+			{type:'convert',from:{'stick':3,'herb':12,'water':1,'seafood':2},into:{'clam chowder':1},every:1,repeat:7,mode:'clam'},
+		],
+		req:{'soup making':true},
+		category:'crafting',
 	});
 	
 	//Base data modification
@@ -81,23 +137,41 @@ func:function()
 	});
 	new G.Tech({
 		name:'advanced mycology',
-		desc:'@provides 40 [inspiration]@provides 40 [wisdom]<>[fungus farm]s have 1.75x efficiency.',
+		desc:'@provides 40 [inspiration]@provides 40 [wisdom]@[fungus farm]s have 1.75x efficiency.',
 		icon:[2,1,'fungi'],
 		cost:{'insight':40,'culture':20},
                 effects:[
-		  {type:'provide res',what:{'inspiration':30,'wisdom':30}},
+		  {type:'provide res',what:{'inspiration':40,'wisdom':40}},
+		],
+		req:{'mycology':true},
+	});
+	new G.Tech({
+		name:'soup making',
+		desc:'@provides 50 [inspiration]@provides 30 [wisdom]@unlocks [soup chef]s.',
+		icon:[0,1,'soup'],
+		cost:{'insight':25,'culture':40},
+                effects:[
+		  {type:'provide res',what:{'inspiration':50,'wisdom':30}},
 		],
 		req:{'mycology':true},
 	});
 	
-	//Finally, we add a trait that amplifies the benefits of consuming hot sauce; it will take on average 20 years to appear once the conditions (knowing the "Hot sauce preparing" tech) is fulfilled.
-// 	new G.Trait({
-// 		name:'hot sauce madness',
-// 		desc:'@your people appreciate [hot sauce] twice as much and will be twice as happy from consuming it.',
-// 		icon:[1,1,'spicySheet'],
-// 		chance:20,
-// 		req:{'hot sauce preparing':true},
-// 		effects:[
-// 			{type:'function',func:function(){G.getDict('hot sauce').turnToByContext['eat']['happiness']=0.2;}},//this is a custom function executed when we gain the trait
-// 		],
+	//traits
+	new G.Trait({
+		name:'soup appreciation',
+		desc:'@your people appreciate [mushroom stew], [vegetable soup], [chicken soup], and [clam chowder] twice as much and will be twice as happy and twice as healthy from consuming them.',
+		icon:[1,0,'soup'],
+		chance:25,
+		req:{'soup making':true},
+		effects:[
+			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eat']['happiness']=0.06;}},
+			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eat']['health']=0.08;}},
+			{type:'function',func:function(){G.getDict('vegetable soup').turnToByContext['eat']['happiness']=0.04;}},
+			{type:'function',func:function(){G.getDict('vegetable soup').turnToByContext['eat']['health']=0.1;}},
+			{type:'function',func:function(){G.getDict('chicken soup').turnToByContext['eat']['happiness']=0.06;}},
+			{type:'function',func:function(){G.getDict('chicken soup').turnToByContext['eat']['health']=0.08;}},
+			{type:'function',func:function(){G.getDict('clam chowder').turnToByContext['eat']['happiness']=0.06;}},
+			{type:'function',func:function(){G.getDict('clam chowder').turnToByContext['eat']['health']=0.08;}},
+		],
+	});
 }});
