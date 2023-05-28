@@ -184,7 +184,7 @@ func:function()
 		name:'myconument',
 		desc:'@leads to the <b>myconument Victory</b><>A monument to the wonders of fungi.//The monument stands tall, reminding your people how much they love fungi.',
 		wonder:'myconument',
-		icon:[0,0,'woderful'],
+		icon:[0,0,'wonderful'],
 		wideIcon:[0,0,'wonderful'],
 		cost:{'basic building materials':2000,'precious building materials':50,'herb':1000},
 		costPerStep:{'basic building materials':250,'precious building materials':200,'herb':100},
@@ -327,6 +327,5 @@ func:function()
 			{type:'addFastTicksOnResearch',amount:500},
 			{type:'addCultureOnStart',amount:10}
 		],
-		icon:[0,0,'woderful'],
 	});
 }});
