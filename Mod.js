@@ -181,16 +181,16 @@ func:function()
 	//Wonders
 	new G.Unit({
 		name:'myconument',
-		desc:'@leads to the <b>Mycomument Victory</b><>A monument to the wonders of fungi.//The monument stands tall, reminding your people how much they love fungi.',
-		wonder:'mycomument',
+		desc:'@leads to the <b>myconument Victory</b><>A monument to the wonders of fungi.//The monument stands tall, reminding your people how much they love fungi.',
+		wonder:'myconument',
 		icon:[0,0,'woderful'],
 		wideIcon:[0,0,'wonderful'],
 		cost:{'basic building materials':2000,'precious building materials':50,'herb':1000},
 		costPerStep:{'basic building materials':250,'precious building materials':200,'herb':100},
 		steps:500,
-		messageOnStart:'You begin the construction of the Mycomonument. Its towering mass already dominates the city, casting awe wherever its shadow reaches.',
+		messageOnStart:'You begin the construction of the myconument. Its towering mass already dominates the city, casting awe wherever its shadow reaches.',
 		finalStepCost:{'population':10,'herb':2000,'fruit':500,'spore':250},
-		finalStepDesc:'To complete the Mycomonument, 10 of your [population,People] must be sacrificed to grow fungi from, you must use 2000 [herb]s and 500 [fruit] to paint it, and you need 250 [spore]s to grow fungi in the soil beneath the monument.',
+		finalStepDesc:'To complete the myconument, 10 of your [population,People] must be sacrificed to grow fungi from, you must use 2000 [herb]s and 500 [fruit] to paint it, and you need 250 [spore]s to grow fungi in the soil beneath the monument.',
 		use:{'land':50,'worker':15,'metal tools':15},
 		//require:{'worker':10,'stone tools':10},
 		req:{'myconument-building':true},
@@ -270,8 +270,8 @@ func:function()
 		req:{'cane processing':true},
 	});
 	new G.Tech({
-		name:'mycomonument-building',
-		desc:'@unlocks the mycomonument@[fungus farm]s have 5x efficiency.',
+		name:'myconument-building',
+		desc:'@unlocks the myconument@[fungus farm]s have 5x efficiency.',
 		icon:[0,0,'wonderful'],
 		cost:{'insight':100,'culture':90},
                 effects:[
