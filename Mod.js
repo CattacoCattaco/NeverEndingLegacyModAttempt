@@ -89,21 +89,21 @@ func:function()
 	new G.Res({
 		name:'sugar',
 		desc:'[sugar] is made from [cane]s.',
-		icon:[0,1,'papery'],
+		icon:[1,0,'papery'],
 		partOf:'misc materials',
 		category:'misc',
 	});
 	new G.Res({
 		name:'paper',
 		desc:'[paper] is made from [cane]s.',
-		icon:[0,2,'papery'],
+		icon:[2,0,'papery'],
 		partOf:'misc materials',
 		category:'misc',
 	});
 	new G.Res({
 		name:'book',
 		desc:'[book]s are may be used up over time, creating [insight].',
-		icon:[1,0,'papery'],
+		icon:[0,1,'papery'],
 		partOf:'misc materials',
 		category:'misc',
 		tick:function(me,tick)
@@ -204,7 +204,7 @@ func:function()
 	G.getDict('jungle').goods.push({type:['sugar cane'],chance:0.75,min:0.475,max:0.95});
 	G.getDict('desert').goods.push({type:['sugar cane'],chance:0.15,min:0.15,max:0.5});
 	G.getDict('forest').goods.push({type:['sugar cane'],chance:0.25,min:0.15,max:0.65});
-	G.getDict('artisan').modes['book']={name:'Write books',desc:'Turn 3 [paper] and 1 [leather] into 1 [book].',icon:[1,0,'papery'],req:{'book writing':true},use:{'stone tools':1}};
+	G.getDict('artisan').modes['book']={name:'Write books',desc:'Turn 3 [paper] and 1 [leather] into 1 [book].',icon:[0,1,'papery'],req:{'book writing':true},use:{'stone tools':1}};
 	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
 	
 	//Thech
