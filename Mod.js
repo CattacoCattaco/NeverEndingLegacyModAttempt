@@ -88,7 +88,7 @@ func:function()
 	});
 	new G.Res({
 		name:'sugar',
-		desc:'[sugar] is made from [cane]s.',
+		desc:'[sugar] can be used to create [candy].',
 		icon:[1,0,'papery'],
 		partOf:'misc materials',
 		category:'misc',
@@ -112,6 +112,14 @@ func:function()
 			var spent=G.lose(me.name,randomFloor(toSpoil),'decay');
 			G.pseudoGather(G.getRes('insight'),randomFloor(spent));
 		},
+	});
+	new G.Res({
+		name:'candy',
+		desc:'[candy] makes people extremely happy when they eat it and never goes bad.',
+		icon:[2,1,'papery'],
+		turnToByContext:{'eating':{'health':0.075},'decay':{'spoiled food':1}},
+		partOf:'food',
+		category:'food',
 	});
   
         //new units
@@ -170,10 +178,12 @@ func:function()
 		modes:{
 			'cane':{name:'Cane processing',icon:[0,0,'papery'],desc:'Craft 1 [paper] and 3 [sugar] from 1 [cane].'},
 			'log':{name:'Wood processing',icon:[1,6],desc:'Craft 3 [paper] from 1 [log].',req:{'wood processing': true}},
+			'sugar':{name:'Sugar processing',icon:[1,6],desc:'Craft 1 [candy] from 1 [sugar].',req:{'candy making': true}},
 		},
 		effects:[
 			{type:'convert',from:{'cane':1},into:{'paper':1,'sugar':3},every:3,mode:'cane'},
 			{type:'convert',from:{'log':1},into:{'paper':3},every:2,mode:'log'},
+			{type:'convert',from:{'sugar':1},into:{'candy':3},every:1,repeat:5,mode:'log'},
 		],
 		req:{'cane processing':true},
 		category:'crafting',
@@ -282,6 +292,16 @@ func:function()
 		  
 		],
 		req:{'advanced mycology':true,'monument-building':true,'fungal appreciation':true},
+	});
+	new G.Tech({
+		name:'candy making',
+		desc:'@processing plants can make [candy] from [sugar].',
+		icon:[2,1,'papery'],
+		cost:{'insight':38},
+                effects:[
+		  
+		],
+		req:{'cane processing':true},
 	});
 	
 	//traits
