@@ -201,7 +201,7 @@ func:function()
 	//Base data modification
 	G.contextNames['fungal farm']='Fungal farming';
 	G.getDict('forest mushrooms').res['gather']['spore']=1;
-	G.getDict('jungle').goods.push({type:['mycelium','big mushroom','forest mushroom'],chance:0.35,min:0.25,max:0.85});
+	G.getDict('jungle').goods.push({type:['mycelium','big mushroom','forest mushrooms'],chance:0.35,min:0.25,max:0.85});
 	G.getDict('jungle').goods.push({type:['sugar cane'],chance:0.75,min:0.475,max:0.95});
 	G.getDict('desert').goods.push({type:['sugar cane'],chance:0.15,min:0.15,max:0.5});
 	G.getDict('forest').goods.push({type:['sugar cane'],chance:0.25,min:0.15,max:0.65});
