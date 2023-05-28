@@ -256,7 +256,7 @@ func:function()
 	new G.Tech({
 		name:'book writing',
 		desc:'@artisans can make [book]s.',
-		icon:[1,0,'papery'],
+		icon:[0,1,'papery'],
 		cost:{'insight':30},
                 effects:[
 		  
