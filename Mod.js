@@ -207,6 +207,9 @@ func:function()
 	G.getDict('forest').goods.push({type:['sugar cane'],chance:0.25,min:0.15,max:0.65});
 	G.getDict('artisan').modes['book']={name:'Write books',desc:'Turn 3 [paper] and 1 [leather] into 1 [book].',icon:[0,1,'papery'],req:{'book writing':true},use:{'stone tools':1}};
 	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
+	G.legacyBonuses.push(
+		{id:'addCultureOnStart',name:'+[X] free culture',desc:'Additional culture when starting a new game.',icon:[0,0],func:function(obj){G.resByName['culture']['amount']+=obj.amount;},context:'new'}
+	);
 	
 	//Thech
 	new G.Tech({
@@ -310,6 +313,19 @@ func:function()
 			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eating']['health']*=1.5;}},
 			{type:'function',func:function(){G.getDict('herb').turnToByContext['eating']['happiness']=0.08;}},
 			{type:'function',func:function(){G.getDict('herb').turnToByContext['eating']['health']*=2;}},
+		],
+	});
+	
+	//Achievements
+	new G.Achiev({
+		tier:0,
+		name:'myconument',
+		desc:'You have been laid to grow in the Myconument, a monument to fungi.',
+		fromUnit:'myconument',
+		effects:[
+			{type:'addFastTicksOnStart',amount:1000},
+			{type:'addFastTicksOnResearch',amount:500},
+			{type:'addCultureOnStart',amount:10}
 		],
 	});
 }});
