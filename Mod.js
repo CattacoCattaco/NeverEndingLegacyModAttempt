@@ -4,7 +4,7 @@ author:'Pookstir',
 desc:'',
 engineVersion:1,
 requires:['Default dataset*'],
-sheets:{'fungi':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png','soup':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/soupSheet.png'},
+sheets:{'fungi':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png','soup':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/soupSheet.png','papery':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/paperySheet.png'},
 func:function()
 {
 	//New goods
@@ -26,6 +26,16 @@ func:function()
 			'gather':{'herb':6,'spore':0.5, 'stick':1},
 			'chop':{'herb':18,'spore':0.75, 'stick':4},
 			'fungal farm':{'herb':36, 'spore':1, 'stick':8},
+		},
+		mult:5,
+	});
+	new G.Goods({
+		name:'sugar cane',
+		desc:'Sugar cane is a plant which can be processed into [sugar] and [paper].',
+		icon:[0,0,'papery'],
+		res:{
+			'gather':{'herb':0.2,'cane':0.5},
+			'chop':{'herb':1,'cane':2.5, 'stick':0.25},
 		},
 		mult:5,
 	});
@@ -65,9 +75,34 @@ func:function()
 		name:'clam chowder',
 		desc:'[clam chowder] is extremely tasty and somewhat healthy.',
 		icon:[1,1,'soup'],
-		turnToByContext:{'eating':{'health':0.02,'happiness':0.05},'decay':{'spore':0.2,'spoiled food':0.8}},
+		turnToByContext:{'eating':{'health':0.02,'happiness':0.05},'decay':{'spoiled food':1}},
 		partOf:'food',
 		category:'food',
+	});
+	new G.Res({
+		name:'cane',
+		desc:'[cane]s may be processed into [paper] and [sugar].',
+		icon:[0,0,'papery'],
+		category:'misc',
+	});
+	new G.Res({
+		name:'sugar',
+		desc:'[sugar] is made from [cane]s.',
+		icon:[0,1,'papery'],
+		category:'misc',
+	});
+	new G.Res({
+		name:'paper',
+		desc:'[paper] is made from [cane]s.',
+		icon:[0,2,'papery'],
+		category:'misc',
+	});
+	new G.Res({
+		name:'book',
+		desc:'[book]s are may be used up over time, creating [insight].',
+		icon:[1,0,'papery'],
+		turnToByContext:{'decay':{'insight':1}},
+		category:'misc',
 	});
   
         //new units
@@ -93,7 +128,7 @@ func:function()
 	new G.Unit({
 		name:'soup chef',
 		desc:'@turns [herb]s, [stick]s, and other ingredients in to soups/stews.',
-		icon:[6,2],
+		icon:[1,1,'soup'],
 		cost:{},
 		use:{'worker':1,'metal tools':1},
 		upkeep:{'coin':0.1},
@@ -114,14 +149,35 @@ func:function()
 		category:'crafting',
 	});
 	
+	new G.Unit({
+		name:'processing plant',
+		desc:'@turns [cane]s into [paper] and [sugar].@gains abilities with new techs.',
+		icon:[1,1,'papery'],
+		cost:{'basic building materials': 150},
+		use:{'worker':3,'metal tools':3},
+		upkeep:{'coin':0.5},
+		gizmos:true,
+		modes:{
+			'cane':{name:'Cane processing',icon:[0,0,'soup'],desc:'Craft 1 [paper] and 3 [sugar] from 1 [cane].'},
+			'log':{name:'Wood processing',icon:[0,1,'soup'],desc:'Craft 3 [paper] from 1 [log].',req:{'wood processing': true}},
+		},
+		effects:[
+			{type:'convert',from:{'cane':1},into:{'paper':1,'sugar':3},every:3,mode:'cane'},
+			{type:'convert',from:{'log':1},into:{'paper':3},every:2,mode:'log'},
+		],
+		req:{'cane processing':true},
+		category:'crafting',
+	});
+	
 	//Base data modification
 	G.contextNames['fungal farm']='Fungal farming';
 	G.getDict('forest mushrooms').res['gather']['spore']=1;
 	G.getDict('jungle').goods.push({type:['mycelium','big mushroom','forest mushroom'],chance:0.35,min:0.25,max:0.85});
-// 		//adding a new mode to artisans so they can make hot sauce from hot peppers
-// 	G.getDict('artisan').modes['hot sauce']={name:'Make hot sauce',desc:'Turn 3 [hot pepper]s and 3 [herb]s into 1 [hot sauce].',req:{'hot sauce preparing':true},use:{'knapped tools':1}};
-// 		//adding a new effect to artisans that handles the actual hot sauce preparing and is only active when the unit has the mode "hot sauce"
-// 	G.getDict('artisan').effects.push({type:'convert',from:{'hot pepper':3,'herb':3},into:{'hot sauce':1},every:3,mode:'hot sauce'});
+	G.getDict('jungle').goods.push({type:['sugar cane'],chance:0.75,min:0.475,max:0.95});
+	G.getDict('desert').goods.push({type:['sugar cane'],chance:0.15,min:0.15,max:0.5});
+	G.getDict('forest').goods.push({type:['sugar cane'],chance:0.25,min:0.15,max:0.65});
+	G.getDict('artisan').modes['book']={name:'Write books',desc:'Turn 3 [paper] and 1 [leather] into 1 [book].',icon:[1,0,'papery'],req:{'book writing':true},use:{'stone tools':1}};
+	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
 	
 	//Thech
 	new G.Tech({
@@ -154,6 +210,36 @@ func:function()
 		  {type:'provide res',what:{'inspiration':50,'wisdom':30}},
 		],
 		req:{'mycology':true},
+	});
+	new G.Tech({
+		name:'cane processing',
+		desc:'@unlocks [processing plant]s.',
+		icon:[0,0,'papery'],
+		cost:{'insight':18},
+                effects:[
+		  
+		],
+		req:{'scouting':true},
+	});
+	new G.Tech({
+		name:'book writing',
+		desc:'@artisans can make [book]s.',
+		icon:[1,0,'papery'],
+		cost:{'insight':30},
+                effects:[
+		  
+		],
+		req:{'cane processing':true},
+	});
+	new G.Tech({
+		name:'wood processing',
+		desc:'@processing plants can make [paper] from [log]s.',
+		icon:[1,6],
+		cost:{'insight':30},
+                effects:[
+		  
+		],
+		req:{'cane processing':true},
 	});
 	
 	//traits
