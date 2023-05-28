@@ -180,20 +180,20 @@ func:function()
 	
 	//Wonders
 	new G.Unit({
-		name:'mausoleum2',
-		desc:'@leads to the <b>Mausoleum Victory</b><>A mystical monument where the dead lie.//A temple housing a tomb deep under its rocky platform, the Mausoleum stands tall, its eternal shadow forever reminding your people of your greatness.',
-		wonder:'mausoleum',
-		icon:[1,14],
-		wideIcon:[0,14],
-		cost:{'basic building materials':1000},
-		costPerStep:{'basic building materials':200,'precious building materials':20},
-		steps:100,
-		messageOnStart:'You begin the construction of the Mausoleum. Its towering mass already dominates the city, casting fear and awe wherever its shadow reaches.',
-		finalStepCost:{'population':100},
-		finalStepDesc:'To complete the Mausoleum, 100 of your [population,People] must be sacrificed to accompany you as servants in the afterlife.',
-		use:{'land':10},
+		name:'myconument',
+		desc:'@leads to the <b>Mycomument Victory</b><>A monument to the wonders of fungi.//The monument stands tall, reminding your people how much they love fungi.',
+		wonder:'mycomument',
+		icon:[0,0,'woderful'],
+		wideIcon:[0,0,'wonderful'],
+		cost:{'basic building materials':2000,'precious building materials':50,'herb':1000},
+		costPerStep:{'basic building materials':250,'precious building materials':200,'herb':100},
+		steps:500,
+		messageOnStart:'You begin the construction of the Mycomonument. Its towering mass already dominates the city, casting awe wherever its shadow reaches.',
+		finalStepCost:{'population':10,'herb':2000,'fruit':500,'spore':250},
+		finalStepDesc:'To complete the Mycomonument, 10 of your [population,People] must be sacrificed to grow fungi from, you must use 2000 [herb]s and 500 [fruit] to paint it, and you need 250 [spore]s to grow fungi in the soil beneath the monument.',
+		use:{'land':50,'worker':15,'metal tools':15},
 		//require:{'worker':10,'stone tools':10},
-		req:{'monument-building':true},
+		req:{'myconument-building':true},
 		category:'wonder',
 	});
 	
@@ -269,6 +269,16 @@ func:function()
 		],
 		req:{'cane processing':true},
 	});
+	new G.Tech({
+		name:'mycomonument-building',
+		desc:'@unlocks the mycomonument@[fungus farm]s have 5x efficiency.',
+		icon:[0,0,'wonderful'],
+		cost:{'insight':100,'culture':90},
+                effects:[
+		  
+		],
+		req:{'advanced mycology':true,'monument-building':true,'fungal appreciation':true},
+	});
 	
 	//traits
 	new G.Trait({
@@ -278,14 +288,27 @@ func:function()
 		chance:25,
 		req:{'soup making':true},
 		effects:[
-			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eating']['happiness']=0.06;}},
-			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eating']['health']=0.08;}},
-			{type:'function',func:function(){G.getDict('vegetable soup').turnToByContext['eating']['happiness']=0.04;}},
-			{type:'function',func:function(){G.getDict('vegetable soup').turnToByContext['eating']['health']=0.1;}},
-			{type:'function',func:function(){G.getDict('chicken soup').turnToByContext['eating']['happiness']=0.06;}},
-			{type:'function',func:function(){G.getDict('chicken soup').turnToByContext['eating']['health']=0.08;}},
-			{type:'function',func:function(){G.getDict('clam chowder').turnToByContext['eating']['happiness']=0.06;}},
-			{type:'function',func:function(){G.getDict('clam chowder').turnToByContext['eating']['health']=0.08;}},
+			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eating']['happiness']*=2;}},
+			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eating']['health']*=2;}},
+			{type:'function',func:function(){G.getDict('vegetable soup').turnToByContext['eating']['happiness']*=2;}},
+			{type:'function',func:function(){G.getDict('vegetable soup').turnToByContext['eating']['health']*=2;}},
+			{type:'function',func:function(){G.getDict('chicken soup').turnToByContext['eating']['happiness']*=2;}},
+			{type:'function',func:function(){G.getDict('chicken soup').turnToByContext['eating']['health']*=2;}},
+			{type:'function',func:function(){G.getDict('clam chowder').turnToByContext['eating']['happiness']*=2;}},
+			{type:'function',func:function(){G.getDict('clam chowder').turnToByContext['eating']['health']*=2;}},
+		],
+	});
+	new G.Trait({
+		name:'fungal appreciation',
+		desc:'@your people appreciate [mushroom stew] and [herb]s twice as much and will be much happier from consuming them from consuming them.',
+		icon:[2,1,'fungi'],
+		chance:20,
+		req:{'mycology':true},
+		effects:[
+			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eating']['happiness']*=1.5;}},
+			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eating']['health']*=1.5;}},
+			{type:'function',func:function(){G.getDict('herb').turnToByContext['eating']['happiness']=0.08;}},
+			{type:'function',func:function(){G.getDict('herb').turnToByContext['eating']['health']*=2;}},
 		],
 	});
 }});
