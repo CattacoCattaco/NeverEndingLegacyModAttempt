@@ -164,14 +164,14 @@ func:function()
 		chance:25,
 		req:{'soup making':true},
 		effects:[
-			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eat']['happiness']=0.06;}},
-			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eat']['health']=0.08;}},
-			{type:'function',func:function(){G.getDict('vegetable soup').turnToByContext['eat']['happiness']=0.04;}},
-			{type:'function',func:function(){G.getDict('vegetable soup').turnToByContext['eat']['health']=0.1;}},
-			{type:'function',func:function(){G.getDict('chicken soup').turnToByContext['eat']['happiness']=0.06;}},
-			{type:'function',func:function(){G.getDict('chicken soup').turnToByContext['eat']['health']=0.08;}},
-			{type:'function',func:function(){G.getDict('clam chowder').turnToByContext['eat']['happiness']=0.06;}},
-			{type:'function',func:function(){G.getDict('clam chowder').turnToByContext['eat']['health']=0.08;}},
+			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eating']['happiness']=0.06;}},
+			{type:'function',func:function(){G.getDict('mushroom stew').turnToByContext['eating']['health']=0.08;}},
+			{type:'function',func:function(){G.getDict('vegetable soup').turnToByContext['eating']['happiness']=0.04;}},
+			{type:'function',func:function(){G.getDict('vegetable soup').turnToByContext['eating']['health']=0.1;}},
+			{type:'function',func:function(){G.getDict('chicken soup').turnToByContext['eating']['happiness']=0.06;}},
+			{type:'function',func:function(){G.getDict('chicken soup').turnToByContext['eating']['health']=0.08;}},
+			{type:'function',func:function(){G.getDict('clam chowder').turnToByContext['eating']['happiness']=0.06;}},
+			{type:'function',func:function(){G.getDict('clam chowder').turnToByContext['eating']['health']=0.08;}},
 		],
 	});
 }});
