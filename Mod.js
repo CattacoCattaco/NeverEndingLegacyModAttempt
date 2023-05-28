@@ -327,5 +327,6 @@ func:function()
 			{type:'addFastTicksOnResearch',amount:500},
 			{type:'addCultureOnStart',amount:10}
 		],
+		icon:[0,0,'woderful'],
 	});
 }});
