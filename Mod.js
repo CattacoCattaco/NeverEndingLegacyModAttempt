@@ -213,14 +213,14 @@ func:function()
 		wonder:'grand plant',
 		icon:[0,1,'wonderful'],
 		wideIcon:[1,1,'wonderful'],
-		cost:{'basic building materials':5000,'precious building materials':50,'herb':1000},
-		costPerStep:{'basic building materials':250,'precious building materials':200,'herb':100},
-		steps:500,
+		cost:{'basic building materials':5000,'precious building materials':50},
+		costPerStep:{'basic building materials':250,'precious building materials':200},
+		steps:1000,
 		messageOnStart:'You begin the construction of the myconument. Its towering mass already dominates the city, casting awe wherever its shadow reaches.',
-		finalStepCost:{'population':10,'herb':2000,'fruit':500,'spore':250},
-		finalStepDesc:'To complete the myconument, 10 of your [population,People] must be sacrificed to grow fungi from, you must use 2000 [herb]s and 500 [fruit] to paint it, and you need 250 [spore]s to grow fungi in the soil beneath the monument.',
+		finalStepCost:{'population':150,'lumber':1000,'strong metal ingot':50},
+		finalStepDesc:'To complete the grand plant, 50 of your [population,People] must be sacrificed, and you must use 1000 [lumber] and 50 [strong metal ingot]s to finish theinterior of the monument.',
 		use:{'land':150,'worker':25,'metal tools':25},
-		req:{'myconument-building':true},
+		req:{'plant-building':true},
 		category:'wonder',
 	});
 	
@@ -307,7 +307,7 @@ func:function()
                 effects:[
 		  
 		],
-		req:{'advanced mycology':true,'monument-building':true,'fungal appreciation':true},
+		req:{'mausoleum':true,'advanced mycology':true,'monument-building':true,'fungal appreciation':true},
 	});
 	new G.Tech({
 		name:'candy making',
@@ -318,6 +318,16 @@ func:function()
 		  
 		],
 		req:{'cane processing':true},
+	});
+	new G.Tech({
+		name:'grand plant-building',
+		desc:'@unlocks the grand plant@[processing plant]s have 5x efficiency.',
+		icon:[0,0,'wonderful'],
+		cost:{'insight':100,'culture':90},
+                effects:[
+		  
+		],
+		req:{'myconument':true,'monument-building':true,'wood processing':true,'candy making':true},
 	});
 	
 	//traits
@@ -362,6 +372,17 @@ func:function()
 			{type:'addFastTicksOnStart',amount:1000},
 			{type:'addFastTicksOnResearch',amount:500},
 			{type:'addCultureOnStart',amount:10}
+		],
+	});
+	new G.Achiev({
+		tier:0,
+		name:'grand plant',
+		desc:'You have been laid to rest under the Grand Plant, a monument to industrialization.//In the future, your people may be more inclined to build industrial structures.',
+		fromUnit:'grand plant',
+		effects:[
+			{type:'addFastTicksOnStart',amount:2000},
+			{type:'addFastTicksOnResearch',amount:600},
+			{type:'addCultureOnStart',amount:18}
 		],
 	});
 }});
