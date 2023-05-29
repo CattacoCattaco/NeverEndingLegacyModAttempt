@@ -404,13 +404,13 @@ func:function()
 	});
 	new G.Tech({
 		name:'coating',
-		desc:'@[blacksmiths workshop]s can make [shaft]s.',
+		desc:'@[blacksmiths workshop]s can make [strong metal coating].',
 		icon:[1,1,'wonderful'],
 		cost:{'insight':20},
                 effects:[
 		  
 		],
-		req:{'grand plant':true,'smelting':true},
+		req:{'grand plant':true,'steel-making':true},
 	});
 	
 	//traits
