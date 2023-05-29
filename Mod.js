@@ -320,7 +320,7 @@ func:function()
 		req:{'cane processing':true},
 	});
 	new G.Tech({
-		name:'grand plant-building',
+		name:'plant-building',
 		desc:'@unlocks the grand plant@[processing plant]s have 5x efficiency.',
 		icon:[0,0,'wonderful'],
 		cost:{'insight':100,'culture':90},
