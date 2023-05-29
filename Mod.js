@@ -207,6 +207,22 @@ func:function()
 		req:{'myconument-building':true},
 		category:'wonder',
 	});
+	new G.Unit({
+		name:'grand plant',
+		desc:'@leads to the <b>grand plant Victory</b><>A monument to industrialization.//The monument stands tall, reminding your people how much they love industrialization.',
+		wonder:'grand plant',
+		icon:[0,1,'wonderful'],
+		wideIcon:[1,1,'wonderful'],
+		cost:{'basic building materials':5000,'precious building materials':50,'herb':1000},
+		costPerStep:{'basic building materials':250,'precious building materials':200,'herb':100},
+		steps:500,
+		messageOnStart:'You begin the construction of the myconument. Its towering mass already dominates the city, casting awe wherever its shadow reaches.',
+		finalStepCost:{'population':10,'herb':2000,'fruit':500,'spore':250},
+		finalStepDesc:'To complete the myconument, 10 of your [population,People] must be sacrificed to grow fungi from, you must use 2000 [herb]s and 500 [fruit] to paint it, and you need 250 [spore]s to grow fungi in the soil beneath the monument.',
+		use:{'land':150,'worker':25,'metal tools':25},
+		req:{'myconument-building':true},
+		category:'wonder',
+	});
 	
 	//Base data modification
 	G.contextNames['fungal farm']='Fungal farming';
