@@ -121,6 +121,56 @@ func:function()
 		partOf:'food',
 		category:'food',
 	});
+	new G.Res({
+		name:'industrial building materials',
+		desc:'Processed materials such as [cog]s, [strong metal coating] and [shaft]s, used to build industrial structures.',
+		icon:[1,6],
+		category:'build',
+	});
+	new G.Res({
+		name:'cog',
+		desc:'Cogs that are used to make machines.',
+		icon:[1,6],
+		partOf:'industrial building materials',
+		category:'build',
+	});
+	new G.Res({
+		name:'strong metal coating',
+		desc:'Metal coating that can reinforce machines.',
+		icon:[1,6],
+		partOf:'industrial building materials',
+		category:'build',
+	});
+	new G.Res({
+		name:'shaft',
+		desc:'Shafts are metal pieces that cogs are attatched to.',
+		icon:[1,6],
+		partOf:'industrial building materials',
+		category:'build',
+	});
+	new G.Res({
+		name:'motor',
+		desc:'Motors are mechanical components that create motion from energy.',
+		icon:[1,6],
+		partOf:'industrial building materials',
+		category:'build',
+	});
+	new G.Res({
+		name:'copper pipe',
+		desc:'Copper pipes are pipes which can move fluid from one point to another.',
+		icon:[1,6],
+		partOf:'industrial building materials',
+		category:'build',
+	});
+	new G.Res({
+		name:'electricity',
+		desc:'Electricity is used to power machines.//The number on the left is how much electricity is being used, while the number on the right is how much you have in total.',
+		icon:[12,5],
+		getDisplayAmount:function()
+		{
+			return B(this.displayedUsedAmount)+'<wbr>/'+B(this.displayedAmount);
+		},
+	});
   
         //new units
         new G.Unit({
@@ -178,12 +228,13 @@ func:function()
 		modes:{
 			'cane':{name:'Cane processing',icon:[0,0,'papery'],desc:'Craft 1 [paper] and 3 [sugar] from 1 [cane].'},
 			'log':{name:'Wood processing',icon:[1,6],desc:'Craft 3 [paper] from 1 [log].',req:{'wood processing': true}},
-			'sugar':{name:'Sugar processing',icon:[1,6],desc:'Craft 1 [candy] from 1 [sugar].',req:{'candy making': true}},
+			'sugar':{name:'Sugar processing',icon:[1,2,'papery'],desc:'Craft 1 [candy] from 1 [sugar].',req:{'candy making': true}},
 		},
 		effects:[
 			{type:'convert',from:{'cane':1},into:{'paper':1,'sugar':3},every:3,mode:'cane'},
 			{type:'convert',from:{'log':1},into:{'paper':3},every:2,mode:'log'},
 			{type:'convert',from:{'sugar':1},into:{'candy':3},every:1,repeat:5,mode:'log'},
+			{type:'mult',value:5,req:{'grand plant-building':true}},
 		],
 		req:{'cane processing':true},
 		category:'crafting',
@@ -220,7 +271,7 @@ func:function()
 		finalStepCost:{'population':150,'lumber':1000,'strong metal ingot':50},
 		finalStepDesc:'To complete the grand plant, 50 of your [population,People] must be sacrificed, and you must use 1000 [lumber] and 50 [strong metal ingot]s to finish theinterior of the monument.',
 		use:{'land':150,'worker':25,'metal tools':25},
-		req:{'plant-building':true},
+		req:{'grand plant-building':true},
 		category:'wonder',
 	});
 	
@@ -232,6 +283,8 @@ func:function()
 	G.getDict('desert').goods.push({type:['sugar cane'],chance:0.15,min:0.15,max:0.5});
 	G.getDict('forest').goods.push({type:['sugar cane'],chance:0.25,min:0.15,max:0.65});
 	G.getDict('artisan').modes['book']={name:'Write books',desc:'Turn 3 [paper] and 1 [leather] into 1 [book].',icon:[0,1,'papery'],req:{'book writing':true},use:{'stone tools':1}};
+	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
+	G.getDict('artisan').modes['cog']={name:'Make Cogs',desc:'Turn 1 [lumber] into 1 [cog].',icon:[0,1,'papery'],req:{'book writing':true},use:{'stone tools':1}};
 	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
 	G.legacyBonuses.push(
 		{id:'addCultureOnStart',name:'+[X] free culture',desc:'Additional culture when starting a new game.',icon:[0,0],func:function(obj){G.resByName['culture']['amount']+=obj.amount;},context:'new'}
@@ -320,7 +373,7 @@ func:function()
 		req:{'cane processing':true},
 	});
 	new G.Tech({
-		name:'plant-building',
+		name:'grand plant-building',
 		desc:'@unlocks the grand plant@[processing plant]s have 5x efficiency.',
 		icon:[1,1,'wonderful'],
 		cost:{'insight':150,'culture':110},
@@ -328,6 +381,36 @@ func:function()
 		  
 		],
 		req:{'myconument':true,'monument-building':true,'wood processing':true,'candy making':true},
+	});
+	new G.Tech({
+		name:'cog making',
+		desc:'@[artisan]s can make [cog]s.',
+		icon:[1,1,'wonderful'],
+		cost:{'insight':20},
+                effects:[
+		  
+		],
+		req:{'grand plant':true,'tool-making': true},
+	});
+	new G.Tech({
+		name:'shaft making',
+		desc:'@[blacksmiths workshop]s can make [shaft]s.',
+		icon:[1,1,'wonderful'],
+		cost:{'insight':20},
+                effects:[
+		  
+		],
+		req:{'grand plant':true,'smelting':true},
+	});
+	new G.Tech({
+		name:'coating',
+		desc:'@[blacksmiths workshop]s can make [shaft]s.',
+		icon:[1,1,'wonderful'],
+		cost:{'insight':20},
+                effects:[
+		  
+		],
+		req:{'grand plant':true,'smelting':true},
 	});
 	
 	//traits
