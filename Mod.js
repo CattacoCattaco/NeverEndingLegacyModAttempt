@@ -284,8 +284,8 @@ func:function()
 	G.getDict('forest').goods.push({type:['sugar cane'],chance:0.25,min:0.15,max:0.65});
 	G.getDict('artisan').modes['book']={name:'Write books',desc:'Turn 3 [paper] and 1 [leather] into 1 [book].',icon:[0,1,'papery'],req:{'book writing':true},use:{'stone tools':1}};
 	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
-	G.getDict('artisan').modes['cog']={name:'Make Cogs',desc:'Turn 1 [lumber] into 1 [cog].',icon:[0,1,'papery'],req:{'book writing':true},use:{'stone tools':1}};
-	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
+	G.getDict('artisan').modes['cog']={name:'Make Cogs',desc:'Turn 1 [lumber] into 1 [cog].',icon:[0,1,'papery'],req:{'cog making':true},use:{'stone tools':1}};
+	G.getDict('artisan').effects.push({type:'convert',from:{'lumber':1},into:{'cog':1},every:3,mode:'cog'});
 	G.legacyBonuses.push(
 		{id:'addCultureOnStart',name:'+[X] free culture',desc:'Additional culture when starting a new game.',icon:[0,0],func:function(obj){G.resByName['culture']['amount']+=obj.amount;},context:'new'}
 	);
@@ -390,7 +390,7 @@ func:function()
                 effects:[
 		  
 		],
-		req:{'grand plant':true,'tool-making': true},
+		req:{'grand plant':true,'carpentry': true},
 	});
 	new G.Tech({
 		name:'shaft making',
