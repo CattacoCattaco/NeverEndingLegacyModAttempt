@@ -394,7 +394,7 @@ func:function()
 	});
 	new G.Tech({
 		name:'shaft making',
-		desc:'@[blacksmiths workshop]s can make [shaft]s.',
+		desc:'@[blacksmith workshop]s can make [shaft]s.',
 		icon:[1,1,'wonderful'],
 		cost:{'insight':20},
                 effects:[
@@ -404,7 +404,7 @@ func:function()
 	});
 	new G.Tech({
 		name:'coating',
-		desc:'@[blacksmiths workshop]s can make [strong metal coating].',
+		desc:'@[blacksmith workshop]s can make [strong metal coating].',
 		icon:[1,1,'wonderful'],
 		cost:{'insight':20},
                 effects:[
