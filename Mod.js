@@ -211,8 +211,8 @@ func:function()
 		name:'grand plant',
 		desc:'@leads to the <b>grand plant Victory</b><>A monument to industrialization.//The monument stands tall, reminding your people how much they love industrialization.',
 		wonder:'grand plant',
-		icon:[0,1,'wonderful'],
-		wideIcon:[1,1,'wonderful'],
+		icon:[1,1,'wonderful'],
+		wideIcon:[0,1,'wonderful'],
 		cost:{'basic building materials':5000,'precious building materials':50},
 		costPerStep:{'basic building materials':250,'precious building materials':200},
 		steps:1000,
@@ -322,8 +322,8 @@ func:function()
 	new G.Tech({
 		name:'plant-building',
 		desc:'@unlocks the grand plant@[processing plant]s have 5x efficiency.',
-		icon:[0,0,'wonderful'],
-		cost:{'insight':100,'culture':90},
+		icon:[1,1,'wonderful'],
+		cost:{'insight':150,'culture':110},
                 effects:[
 		  
 		],
