@@ -233,7 +233,7 @@ func:function()
 		effects:[
 			{type:'convert',from:{'cane':1},into:{'paper':1,'sugar':3},every:3,mode:'cane'},
 			{type:'convert',from:{'log':1},into:{'paper':3},every:2,mode:'log'},
-			{type:'convert',from:{'sugar':1},into:{'candy':3},every:1,repeat:5,mode:'log'},
+			{type:'convert',from:{'sugar':1},into:{'candy':3},every:1,repeat:5,mode:'sugar'},
 			{type:'mult',value:5,req:{'grand plant-building':true}},
 		],
 		req:{'cane processing':true},
