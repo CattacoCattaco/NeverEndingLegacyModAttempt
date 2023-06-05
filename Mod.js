@@ -117,7 +117,7 @@ func:function()
 		name:'candy',
 		desc:'[candy] makes people extremely happy when they eat it and never goes bad.',
 		icon:[2,1,'papery'],
-		turnToByContext:{'eating':{'health':0.075},'decay':{'spoiled food':1}},
+		turnToByContext:{'eating':{'hapiness':0.075},'decay':{'spoiled food':1}},
 		partOf:'food',
 		category:'food',
 	});
@@ -433,7 +433,7 @@ func:function()
 	});
 	new G.Trait({
 		name:'fungal appreciation',
-		desc:'@your people appreciate [mushroom stew] and [herb]s twice as much and will be much happier from consuming them from consuming them.',
+		desc:'@your people appreciate [mushroom stew] and [herb]s much more and will be much happier and healthier from consuming them from consuming them.',
 		icon:[2,1,'fungi'],
 		chance:20,
 		req:{'mycology':true},
