@@ -294,10 +294,10 @@ func:function()
 		{id:'Mausoleum',name:'History of the Mausoleum',desc:'This may do something at some point',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Mausoleum']);},context:'new'}
 	);
 	G.legacyBonuses.push(
-		{id:'Myconument',name:'History of the Myconument',desc:'This may do something at some point',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Myconument']);}
+		{id:'Myconument',name:'History of the Myconument',desc:'This may do something at some point',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Myconument']);},context:'new'}
 	);
 	G.legacyBonuses.push(
-		{id:'Grand Plant',name:'History of the Grand Plant',desc:'Unlocks industrialization',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Grand Plant']);}
+		{id:'Grand Plant',name:'History of the Grand Plant',desc:'Unlocks industrialization',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Grand Plant']);},context:'new'}
 	);
 	
 	//Thech
