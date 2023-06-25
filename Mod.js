@@ -126,6 +126,7 @@ func:function()
 		desc:'Processed materials such as [cog]s, [strong metal coating] and [shaft]s, used to build industrial structures.',
 		icon:[1,6],
 		category:'build',
+		meta:true,
 	});
 	new G.Res({
 		name:'cog',
@@ -170,6 +171,7 @@ func:function()
 		{
 			return B(this.displayedUsedAmount)+'<wbr>/'+B(this.displayedAmount);
 		},
+		category:'build',
 	});
   
         //new units
