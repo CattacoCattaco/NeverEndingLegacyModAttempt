@@ -4,7 +4,7 @@ author:'Pookstir',
 desc:'',
 engineVersion:1,
 requires:['Default dataset*'],
-sheets:{'fungi':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png','soup':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/soupSheet.png','papery':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/paperySheet.png','wonderful':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/wonderfulSheet.png'},
+sheets:{'fungi':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png','soup':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/soupSheet.png','papery':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/paperySheet.png','wonderful':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/wonderfulSheet.png','industrial':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/industrial.png'},
 func:function()
 {
 	//New goods
@@ -124,49 +124,49 @@ func:function()
 	new G.Res({
 		name:'industrial building materials',
 		desc:'Processed materials such as [cog]s, [strong metal coating] and [shaft]s, used to build industrial structures.',
-		icon:[1,6],
+		icon:[2,1,'industrial'],
 		category:'build',
 		meta:true,
 	});
 	new G.Res({
 		name:'cog',
 		desc:'Cogs that are used to make machines.',
-		icon:[1,6],
+		icon:[1,0,'industrial'],
 		partOf:'industrial building materials',
 		category:'build',
 	});
 	new G.Res({
 		name:'strong metal coating',
 		desc:'Metal coating that can reinforce machines.',
-		icon:[1,6],
+		icon:[2,0,'industrial'],
 		partOf:'industrial building materials',
 		category:'build',
 	});
 	new G.Res({
 		name:'shaft',
 		desc:'Shafts are metal pieces that cogs are attatched to.',
-		icon:[1,6],
+		icon:[0,0,'industrial'],
 		partOf:'industrial building materials',
 		category:'build',
 	});
 	new G.Res({
 		name:'motor',
 		desc:'Motors are mechanical components that create motion from energy.',
-		icon:[1,6],
+		icon:[1,1,'industrial'],
 		partOf:'industrial building materials',
 		category:'build',
 	});
 	new G.Res({
 		name:'copper pipe',
 		desc:'Copper pipes are pipes which can move fluid from one point to another.',
-		icon:[1,6],
+		icon:[0,1,'industrial'],
 		partOf:'industrial building materials',
 		category:'build',
 	});
 	new G.Res({
 		name:'electricity',
 		desc:'Electricity is used to power machines.//The number on the left is how much electricity is being used, while the number on the right is how much you have in total.',
-		icon:[12,5],
+		icon:[3,0,'industrial'],
 		getDisplayAmount:function()
 		{
 			return B(this.displayedUsedAmount)+'<wbr>/'+B(this.displayedAmount);
@@ -286,8 +286,12 @@ func:function()
 	G.getDict('forest').goods.push({type:['sugar cane'],chance:0.25,min:0.15,max:0.65});
 	G.getDict('artisan').modes['book']={name:'Write books',desc:'Turn 3 [paper] and 1 [leather] into 1 [book].',icon:[0,1,'papery'],req:{'book writing':true},use:{'stone tools':1}};
 	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
-	G.getDict('artisan').modes['cog']={name:'Make Cogs',desc:'Turn 1 [lumber] into 1 [cog].',icon:[0,1,'papery'],req:{'cog making':true},use:{'stone tools':1}};
+	G.getDict('artisan').modes['cog']={name:'Make Cogs',desc:'Turn 1 [lumber] into 1 [cog].',icon:[0,1,'papery'],req:{'cog making':true},use:{'metal tools':1}};
 	G.getDict('artisan').effects.push({type:'convert',from:{'lumber':1},into:{'cog':1},every:3,mode:'cog'});
+	G.getDict('blacksmith workshop').modes['shaft']={name:'Make Shafts',desc:'Turn 1 [strong metal ingot] into 2 [shaft]s.',icon:[0,0,'industrial'],req:{'shaft making':true},use:{'metal tools':1}};
+	G.getDict('blacksmith workshop').effects.push({type:'convert',from:{'strong metal ingot':1},into:{'shaft':2},every:5,mode:'shaft'});
+	G.getDict('blacksmith workshop').modes['coat']={name:'Make Shafts',desc:'Turn 1 [strong metal ingot] into 1 [strong metal coating].',icon:[2,0,'industrial'],req:{'shaft making':true},use:{'metal tools':1}};
+	G.getDict('blacksmith workshop').effects.push({type:'convert',from:{'strong metal ingot':1},into:{'strong metal coating':1},every:5,mode:'coat'});
 	G.getAchiev('mausoleum').effects.push({type:'Mausoleum',amount:1});
 	G.legacyBonuses.push(
 		{id:'addCultureOnStart',name:'+[X] free culture',desc:'Additional culture when starting a new game.',icon:[0,0],func:function(obj){G.resByName['culture']['amount']+=obj.amount;},context:'new'}
