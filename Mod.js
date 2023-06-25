@@ -370,7 +370,7 @@ func:function()
                 effects:[
 		  
 		],
-		req:{'history of the Muasoleum':true,'advanced mycology':true,'monument-building':true,'fungal appreciation':true},
+		req:{'history of the Mausoleum':true,'advanced mycology':true,'monument-building':true,'fungal appreciation':true},
 	});
 	new G.Tech({
 		name:'candy making',
