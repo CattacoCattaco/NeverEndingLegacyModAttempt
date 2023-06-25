@@ -291,7 +291,7 @@ func:function()
 		{id:'addCultureOnStart',name:'+[X] free culture',desc:'Additional culture when starting a new game.',icon:[0,0],func:function(obj){G.resByName['culture']['amount']+=obj.amount;},context:'new'}
 	);
 	G.legacyBonuses.push(
-		{id:'Mausoleum',name:'History of the Mausoleum',desc:'This may do something at some point',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Mausoleum']);}
+		{id:'Mausoleum',name:'History of the Mausoleum',desc:'This may do something at some point',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Mausoleum']);},context:'new'}
 	);
 	G.legacyBonuses.push(
 		{id:'Myconument',name:'History of the Myconument',desc:'This may do something at some point',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Myconument']);}
