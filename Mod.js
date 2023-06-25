@@ -292,6 +292,7 @@ func:function()
 	G.getDict('blacksmith workshop').effects.push({type:'convert',from:{'strong metal ingot':1},into:{'shaft':2},every:5,mode:'shaft'});
 	G.getDict('blacksmith workshop').modes['coat']={name:'Make Shafts',desc:'Turn 1 [strong metal ingot] into 1 [strong metal coating].',icon:[2,0,'industrial'],req:{'shaft making':true},use:{'metal tools':1}};
 	G.getDict('blacksmith workshop').effects.push({type:'convert',from:{'strong metal ingot':1},into:{'strong metal coating':1},every:5,mode:'coat'});
+	G.resCategories['build'].side.push('industrial building materials');
 	G.getAchiev('mausoleum').effects.push({type:'Mausoleum',amount:1});
 	G.legacyBonuses.push(
 		{id:'addCultureOnStart',name:'+[X] free culture',desc:'Additional culture when starting a new game.',icon:[0,0],func:function(obj){G.resByName['culture']['amount']+=obj.amount;},context:'new'}
