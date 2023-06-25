@@ -286,7 +286,7 @@ func:function()
 	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
 	G.getDict('artisan').modes['cog']={name:'Make Cogs',desc:'Turn 1 [lumber] into 1 [cog].',icon:[0,1,'papery'],req:{'cog making':true},use:{'stone tools':1}};
 	G.getDict('artisan').effects.push({type:'convert',from:{'lumber':1},into:{'cog':1},every:3,mode:'cog'});
-	G.getDict('mausoleum').effects.push({type:'Mausoleum',amount:1});
+	G.getAchiev('mausoleum').effects.push({type:'Mausoleum',amount:1});
 	G.legacyBonuses.push(
 		{id:'addCultureOnStart',name:'+[X] free culture',desc:'Additional culture when starting a new game.',icon:[0,0],func:function(obj){G.resByName['culture']['amount']+=obj.amount;},context:'new'}
 	);
