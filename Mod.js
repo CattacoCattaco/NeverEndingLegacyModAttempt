@@ -370,7 +370,7 @@ func:function()
                 effects:[
 		  
 		],
-		req:{'mausoleum':true,'advanced mycology':true,'monument-building':true,'fungal appreciation':true},
+		req:{'history of the Muasoleum':true,'advanced mycology':true,'monument-building':true,'fungal appreciation':true},
 	});
 	new G.Tech({
 		name:'candy making',
@@ -390,7 +390,7 @@ func:function()
                 effects:[
 		  
 		],
-		req:{'myconument':true,'monument-building':true,'wood processing':true,'candy making':true},
+		req:{'history of the Myconument':true,'monument-building':true,'wood processing':true,'candy making':true},
 	});
 	new G.Tech({
 		name:'cog making',
@@ -400,7 +400,7 @@ func:function()
                 effects:[
 		  
 		],
-		req:{'grand plant':true,'carpentry': true},
+		req:{'history of the Grand Plant':true,'carpentry': true},
 	});
 	new G.Tech({
 		name:'shaft making',
@@ -410,7 +410,7 @@ func:function()
                 effects:[
 		  
 		],
-		req:{'grand plant':true,'smelting':true},
+		req:{'history of the Grand Plant':true,'smelting':true},
 	});
 	new G.Tech({
 		name:'coating',
@@ -420,7 +420,7 @@ func:function()
                 effects:[
 		  
 		],
-		req:{'grand plant':true,'steel-making':true},
+		req:{'history of the Grand Plant':true,'steel-making':true},
 	});
 	new G.Tech({
 		name:'history of the Mausoleum',
@@ -428,7 +428,7 @@ func:function()
 		cost:{},
                 effects:[
 		],
-		req:{'tribalism':true},
+		req:{'history of the Myconument':true},
 	});
 	new G.Tech({
 		name:'history of the Myconument',
@@ -436,7 +436,7 @@ func:function()
 		cost:{},
                 effects:[
 		],
-		req:{'tribalism':true},
+		req:{'history of the Grand Plant':true},
 	});
 	new G.Tech({
 		name:'history of the Grand Plant',
@@ -444,7 +444,7 @@ func:function()
 		cost:{},
                 effects:[
 		],
-		req:{'tribalism':true},
+		req:{'coating':true},
 	});
 	
 	//traits
@@ -488,7 +488,8 @@ func:function()
 		effects:[
 			{type:'addFastTicksOnStart',amount:1000},
 			{type:'addFastTicksOnResearch',amount:500},
-			{type:'addCultureOnStart',amount:10}
+			{type:'addCultureOnStart',amount:10},
+			{type:'Myconument',amount:1}
 		],
 	});
 	new G.Achiev({
@@ -499,7 +500,8 @@ func:function()
 		effects:[
 			{type:'addFastTicksOnStart',amount:2000},
 			{type:'addFastTicksOnResearch',amount:600},
-			{type:'addCultureOnStart',amount:18}
+			{type:'addCultureOnStart',amount:18},
+			{type:'Grand Plant',amount:1}
 		],
 	});
 }});
