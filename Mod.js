@@ -117,7 +117,7 @@ func:function()
 		name:'candy',
 		desc:'[candy] makes people extremely happy when they eat it and never goes bad.',
 		icon:[2,1,'papery'],
-		turnToByContext:{'eating':{'hapiness':0.075},'decay':{'spoiled food':1}},
+		turnToByContext:{'eating':{'happiness':0.075},'decay':{'spoiled food':1}},
 		partOf:'food',
 		category:'food',
 	});
@@ -286,8 +286,18 @@ func:function()
 	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
 	G.getDict('artisan').modes['cog']={name:'Make Cogs',desc:'Turn 1 [lumber] into 1 [cog].',icon:[0,1,'papery'],req:{'cog making':true},use:{'stone tools':1}};
 	G.getDict('artisan').effects.push({type:'convert',from:{'lumber':1},into:{'cog':1},every:3,mode:'cog'});
+	G.getDict('mausoleum').effects.push({type:'Mausoleum',amount:1});
 	G.legacyBonuses.push(
 		{id:'addCultureOnStart',name:'+[X] free culture',desc:'Additional culture when starting a new game.',icon:[0,0],func:function(obj){G.resByName['culture']['amount']+=obj.amount;},context:'new'}
+	);
+	G.legacyBonuses.push(
+		{id:'Mausoleum',name:'History of the Mausoleum',desc:'This may do something at some point',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Mausoleum']);}
+	);
+	G.legacyBonuses.push(
+		{id:'Myconument',name:'History of the Myconument',desc:'This may do something at some point',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Myconument']);}
+	);
+	G.legacyBonuses.push(
+		{id:'Grand Plant',name:'History of the Grand Plant',desc:'Unlocks industrialization',icon:[0,0],func:function(obj){G.gainTech(G.techByName['history of the Grand Plant']);}
 	);
 	
 	//Thech
@@ -411,6 +421,30 @@ func:function()
 		  
 		],
 		req:{'grand plant':true,'steel-making':true},
+	});
+	new G.Tech({
+		name:'history of the Mausoleum',
+		icon:[1,1,'fungi'],
+		cost:{},
+                effects:[
+		],
+		req:{'tribalism':true},
+	});
+	new G.Tech({
+		name:'history of the Myconument',
+		icon:[1,1,'fungi'],
+		cost:{},
+                effects:[
+		],
+		req:{'tribalism':true},
+	});
+	new G.Tech({
+		name:'history of the Grand Plant',
+		icon:[1,1,'fungi'],
+		cost:{},
+                effects:[
+		],
+		req:{'tribalism':true},
 	});
 	
 	//traits
