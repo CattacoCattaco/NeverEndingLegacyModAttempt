@@ -428,7 +428,7 @@ func:function()
 		cost:{},
                 effects:[
 		],
-		req:{'history of the Myconument':true},
+		req:{'tribalism':false},
 	});
 	new G.Tech({
 		name:'history of the Myconument',
@@ -436,7 +436,7 @@ func:function()
 		cost:{},
                 effects:[
 		],
-		req:{'history of the Grand Plant':true},
+		req:{'tribalism':false},
 	});
 	new G.Tech({
 		name:'history of the Grand Plant',
@@ -444,7 +444,7 @@ func:function()
 		cost:{},
                 effects:[
 		],
-		req:{'coating':true},
+		req:{'tribalism':false},
 	});
 	
 	//traits
