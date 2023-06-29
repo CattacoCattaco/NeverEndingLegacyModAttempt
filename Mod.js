@@ -245,6 +245,21 @@ func:function()
 		category:'crafting',
 	});
 	
+	new G.Unit({
+		name:'Double Layered Building',
+		desc:'@Provides extra land.',
+		icon:[1,1,'papery'],
+		cost:{'basic building materials': 500},
+		use:{},
+		upkeep:{},
+		gizmos:true,
+		effects:[
+			{type:'provide',what:{'land':10}},
+		],
+		req:{'cane processing':true},
+		category:'civil',
+	});
+	
 	//Wonders
 	new G.Unit({
 		name:'myconument',
@@ -405,7 +420,7 @@ func:function()
 	new G.Tech({
 		name:'cog making',
 		desc:'@[artisan]s can make [cog]s.',
-		icon:[1,1,'wonderful'],
+		icon:[1,0,'industrial'],
 		cost:{'insight':20},
                 effects:[
 		  
@@ -415,23 +430,35 @@ func:function()
 	new G.Tech({
 		name:'shaft making',
 		desc:'@[blacksmith workshop]s can make [shaft]s.',
-		icon:[1,1,'wonderful'],
-		cost:{'insight':20},
-                effects:[
-		  
-		],
-		req:{'history of the Grand Plant':true,'smelting':true},
-	});
-	new G.Tech({
-		name:'coating',
-		desc:'@[blacksmith workshop]s can make [strong metal coating].',
-		icon:[1,1,'wonderful'],
+		icon:[0,0,'industrial'],
 		cost:{'insight':20},
                 effects:[
 		  
 		],
 		req:{'history of the Grand Plant':true,'steel-making':true},
 	});
+	new G.Tech({
+		name:'coating',
+		desc:'@[blacksmith workshop]s can make [strong metal coating].',
+		icon:[2,0,'industrial'],
+		cost:{'insight':20},
+                effects:[
+		  
+		],
+		req:{'history of the Grand Plant':true,'steel-making':true},
+	});
+	new G.Tech({
+		name:'multilayer construction',
+		desc:'@unlocks Double Layered buildings.',
+		icon:[3,1,'industial'],
+		cost:{'insight':35},
+                effects:[
+		  
+		],
+		req:{'history of the Grand Plant':true,'cities':true},
+	});
+
+	//History techs
 	new G.Tech({
 		name:'history of the Mausoleum',
 		icon:[1,1,'fungi'],
