@@ -192,7 +192,7 @@ func:function()
 		cost:{'spore':2,'basic building materials':125,'spoiled food':5000},
 		use:{'worker':1},
 		modes:{
-			'fungus':{name:'Fungal farming',icon:[1,0,'fungi'],desc:'Farm fungi.'},
+			'fungus':{name:'Fungal farming',icon:[2,0,'fungi'],desc:'Farm fungi.'},
 		},
 		effects:[
                         {type:'gather',context:'fungal farm',amount:2,max:4,mode:'fungus'},
@@ -313,7 +313,7 @@ func:function()
 	G.getDict('forest').goods.push({type:['sugar cane'],chance:0.25,min:0.15,max:0.65});
 	G.getDict('artisan').modes['book']={name:'Write books',desc:'Turn 3 [paper] and 1 [leather] into 1 [book].',icon:[0,1,'papery'],req:{'book writing':true},use:{'stone tools':1}};
 	G.getDict('artisan').effects.push({type:'convert',from:{'paper':3,'leather':1},into:{'book':1},every:3,mode:'book'});
-	G.getDict('artisan').modes['cog']={name:'Make Cogs',desc:'Turn 1 [lumber] into 1 [cog].',icon:[0,1,'papery'],req:{'cog making':true},use:{'metal tools':1}};
+	G.getDict('artisan').modes['cog']={name:'Make Cogs',desc:'Turn 1 [lumber] into 1 [cog].',icon:[1,0,'industrial'],req:{'cog making':true},use:{'metal tools':1}};
 	G.getDict('artisan').effects.push({type:'convert',from:{'lumber':1},into:{'cog':1},every:3,mode:'cog'});
 	G.getDict('blacksmith workshop').modes['shaft']={name:'Make Shafts',desc:'Turn 1 [strong metal ingot] into 2 [shaft]s.',icon:[0,0,'industrial'],req:{'shaft making':true},use:{'metal tools':1}};
 	G.getDict('blacksmith workshop').effects.push({type:'convert',from:{'strong metal ingot':1},into:{'shaft':2},every:5,mode:'shaft'});
@@ -459,7 +459,7 @@ func:function()
 	new G.Tech({
 		name:'multilayer construction',
 		desc:'@unlocks Double Layered buildings.',
-		icon:[3,1,'industial'],
+		icon:[0,0,'industial'],
 		cost:{'insight':35},
                 effects:[
 		  
