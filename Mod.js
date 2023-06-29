@@ -182,13 +182,16 @@ func:function()
 		icon:[0,1,'fungi'],
 		cost:{'spore':2,'basic building materials':125,'spoiled food':5000},
 		use:{'worker':1},
+		modes:{
+			'fungus':{name:'Fungal farming',icon:[2,0,'fungi'],desc:'Farm fungi.'},
+		},
 		effects:[
-                        {type:'gather',context:'fungal farm',amount:2,max:4},
-			{type:'gather',context:'fungal farm',what:{'herb':14},amount:2,max:18},
-			{type:'gather',context:'fungal farm',what:{'stick':0.5},amount:1,max:3},
-			{type:'gather',context:'fungal farm',what:{'spore':0.25},amount:1,max:1,req:{'advanced mycology':true}},
-			{type:'mult',value:1.75,req:{'advanced mycology':true}},
-			{type:'mult',value:5,req:{'myconument-building':true}},
+                        {type:'gather',context:'fungal farm',amount:2,max:4,mode:'fungus'},
+			{type:'gather',context:'fungal farm',what:{'herb':14},amount:2,max:18,mode:'fungus'},
+			{type:'gather',context:'fungal farm',what:{'stick':0.5},amount:1,max:3,mode:'fungus'},
+			{type:'gather',context:'fungal farm',what:{'spore':0.25},amount:1,max:1,req:{'advanced mycology':true},mode:'fungus'},
+			{type:'mult',value:1.75,req:{'advanced mycology':true},mode:'fungus'},
+			{type:'mult',value:5,req:{'myconument-building':true},mode:'fungus'},
 		],
 		req:{'mycology':true},
 		category:'production',
@@ -290,7 +293,7 @@ func:function()
 	G.getDict('artisan').effects.push({type:'convert',from:{'lumber':1},into:{'cog':1},every:3,mode:'cog'});
 	G.getDict('blacksmith workshop').modes['shaft']={name:'Make Shafts',desc:'Turn 1 [strong metal ingot] into 2 [shaft]s.',icon:[0,0,'industrial'],req:{'shaft making':true},use:{'metal tools':1}};
 	G.getDict('blacksmith workshop').effects.push({type:'convert',from:{'strong metal ingot':1},into:{'shaft':2},every:5,mode:'shaft'});
-	G.getDict('blacksmith workshop').modes['coat']={name:'Make Shafts',desc:'Turn 1 [strong metal ingot] into 1 [strong metal coating].',icon:[2,0,'industrial'],req:{'shaft making':true},use:{'metal tools':1}};
+	G.getDict('blacksmith workshop').modes['coat']={name:'Make Strong Metal Coatings',desc:'Turn 1 [strong metal ingot] into 1 [strong metal coating].',icon:[2,0,'industrial'],req:{'shaft making':true},use:{'metal tools':1}};
 	G.getDict('blacksmith workshop').effects.push({type:'convert',from:{'strong metal ingot':1},into:{'strong metal coating':1},every:5,mode:'coat'});
 	G.resCategories['build'].side.push('industrial building materials');
 	G.getAchiev('mausoleum').effects.push({type:'Mausoleum',amount:1});
