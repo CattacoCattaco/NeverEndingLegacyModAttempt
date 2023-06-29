@@ -41,6 +41,15 @@ func:function()
 	});
   
   	//new resources
+	
+	var loseMaterialsTick=function(me,tick)
+	{
+		if (G.checkPolicy('disable spoiling')=='off')
+		{
+			G.props['perishable materials list'].push(me);
+		}
+	};
+	
 	new G.Res({
 		name:'spore',
 		desc:'[spore]s are capable of being used to grow fungi.',
