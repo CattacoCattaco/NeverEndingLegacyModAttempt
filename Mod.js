@@ -125,7 +125,7 @@ func:function()
 		name:'industrial building materials',
 		desc:'Processed materials such as [cog]s, [strong metal coating] and [shaft]s, used to build industrial structures.',
 		icon:[2,1,'industrial'],
-		category:'build',
+		tick:loseMaterialsTick,
 		meta:true,
 	});
 	new G.Res({
