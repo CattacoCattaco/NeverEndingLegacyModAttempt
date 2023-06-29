@@ -192,7 +192,7 @@ func:function()
 		cost:{'spore':2,'basic building materials':125,'spoiled food':5000},
 		use:{'worker':1},
 		modes:{
-			'fungus':{name:'Fungal farming',icon:[2,0,'fungi'],desc:'Farm fungi.'},
+			'fungus':{name:'Fungal farming',icon:[1,0,'fungi'],desc:'Farm fungi.'},
 		},
 		effects:[
                         {type:'gather',context:'fungal farm',amount:2,max:4,mode:'fungus'},
