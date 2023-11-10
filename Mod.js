@@ -1,12 +1,12 @@
-// G.AddData({
-// name:'Name',
-// author:'Pookstir',
-// desc:'',
-// engineVersion:1,
-// requires:['Default dataset*'],
-// sheets:{'fungi':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png','soup':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/soupSheet.png','papery':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/paperySheet.png','wonderful':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/wonderfulSheet.png','industrial':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/industrial.png'},
-// func:function()
-// {
+G.AddData({
+name:'Name',
+author:'Pookstir',
+desc:'',
+engineVersion:1,
+requires:['Default dataset*'],
+sheets:{'fungi':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png','soup':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/soupSheet.png','papery':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/paperySheet.png','wonderful':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/wonderfulSheet.png','industrial':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/industrial.png'},
+func:function()
+{
 // 	//New goods
 // 	new G.Goods({
 // 		name:'mycelium',
@@ -550,4 +550,4 @@
 // 			{type:'Grand Plant',amount:1}
 // 		],
 // 	});
-// }});
+}});
