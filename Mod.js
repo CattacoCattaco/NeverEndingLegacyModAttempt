@@ -1,6 +1,6 @@
 G.AddData({
-name:'Name',
-author:'Pookstir',
+name:'Cattaco\'s Neverending Legacy Mod',
+author:'Pookstir, aka Cattaco',
 desc:'',
 engineVersion:1,
 requires:['Default dataset*'],
