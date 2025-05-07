@@ -4,7 +4,7 @@ author:'Pookstir',
 desc:'',
 engineVersion:1,
 requires:['Default dataset*'],
-sheets:{'fungi':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png','soup':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/soupSheet.png','papery':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/paperySheet.png','wonderful':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/wonderfulSheet.png','industrial':'https://pookstir.github.io/NeverEndingLegacyModAttempt/img/industrial.png'},
+sheets:{'fungi':'https://cattacocattaco.github.io/NeverEndingLegacyModAttempt/img/fungiSheet.png','soup':'https://cattacocattaco.github.io/NeverEndingLegacyModAttempt/img/soupSheet.png','papery':'https://cattacocattaco.github.io/NeverEndingLegacyModAttempt/img/paperySheet.png','wonderful':'https://cattacocattaco.github.io/NeverEndingLegacyModAttempt/img/wonderfulSheet.png','industrial':'https://cattacocattaco.github.io/NeverEndingLegacyModAttempt/img/industrial.png'},
 func:function()
 {
 	//New goods
